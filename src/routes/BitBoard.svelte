@@ -2,6 +2,7 @@
   export let xSize: number;
   export let ySize: number;
   export let value: bigint;
+  export let disabled: boolean;
 
   let bits: bigint[] = [];
 
@@ -15,13 +16,19 @@
   }
 </script>
 
-<div class="flex flex-col">
+<div class="flex flex-col text-black">
   {#each Array(ySize) as _, y}
     <div class="flex flex-row">
       {#each Array(xSize) as _, x}
-        <div class="w-6 h-6 text-center">
+        <button
+          {disabled}
+          class="w-6 h-6 text-center"
+          on:click={() => {
+            value = value ^ (1n << (BigInt(y) * BigInt(xSize) + BigInt(x)));
+          }}
+        >
           {bits[(x % xSize) + y * xSize]}
-        </div>
+        </button>
       {/each}
     </div>
   {/each}

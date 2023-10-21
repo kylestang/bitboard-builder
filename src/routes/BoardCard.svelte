@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Input, NumberInput, Card, Button, ButtonGroup } from 'flowbite-svelte';
+  import { Input, Card, Button, ButtonGroup } from 'flowbite-svelte';
   import BitBoard from './BitBoard.svelte';
 
   export let boardValue = 0n;
@@ -12,8 +12,8 @@
 
   // Mask to same size as grid
   $: if (xSize !== null && ySize !== null) {
-    boardValue = boardValue & ((1n << (BigInt(xSize) * BigInt(ySize))) - 1n)
-  } 
+    boardValue = boardValue & ((1n << (BigInt(xSize) * BigInt(ySize))) - 1n);
+  }
 
   $: {
     decValue = boardValue.toString(10);
@@ -22,28 +22,38 @@
   }
 </script>
 
-<Card class="max-w-full w-full sm:w-fit gap-4 items-center">
-  <BitBoard xSize={Number(xSize)} ySize={Number(ySize)} value={boardValue} />
-
-  <div class="flex flex-row gap-2">
-    <div class="flex flex-row items-center">
-      X size:
-      <NumberInput bind:value={xSize} class="w-14" />
-    </div>
-    <div class="flex flex-row items-center">
-      Y size:
-      <NumberInput bind:value={ySize} class="w-14" />
-    </div>
-  </div>
+<Card class="max-w-max w-full sm:w-fit gap-4 items-center">
+  <BitBoard disabled={false} xSize={Number(xSize)} ySize={Number(ySize)} bind:value={boardValue} />
 
   <ButtonGroup>
-    <Button on:click={() => {boardValue = ~0n}}>Fill</Button>
-    <Button on:click={() => {boardValue = 0n}}>Clear</Button>
-    <Button on:click={() => {boardValue = boardValue << 1n}}>Left</Button>
-    <Button on:click={() => {boardValue = boardValue >> 1n}}>Right</Button>
+    <Button
+      on:click={() => {
+        boardValue = ~0n;
+      }}>Fill</Button
+    >
+    <Button
+      on:click={() => {
+        boardValue = 0n;
+      }}>Clear</Button
+    >
+    <Button
+      on:click={() => {
+        boardValue = boardValue << 1n;
+      }}>Left</Button
+    >
+    <Button
+      on:click={() => {
+        boardValue = boardValue >> 1n;
+      }}>Right</Button
+    >
+    <Button
+      on:click={() => {
+        boardValue = ~boardValue;
+      }}>Not</Button
+    >
   </ButtonGroup>
 
-  <div class="flex flex-col">
+  <div class="flex flex-col w-full">
     Value:
     <Input
       bind:value={decValue}
@@ -54,33 +64,40 @@
         }
         boardValue = BigInt(decValue);
       }}
-      class="w-50"
     />
     <Input
       bind:value={hexValue}
       on:input={() => {
         let pieces = hexValue.split('x', 2);
-        let nums = pieces[1].replace(/[^0-9a-fA-F]/g, '');
-        if (nums === '') {
+        let nums;
+        if (pieces.length === 1) {
           nums = '0';
+        } else {
+          nums = pieces[1].replace(/[^0-9a-fA-F]/g, '');
+          if (nums === '') {
+            nums = '0';
+          }
         }
         hexValue = '0x' + nums;
         boardValue = BigInt(hexValue);
       }}
-      class="w-50"
     />
     <Input
       bind:value={binValue}
       on:input={() => {
         let pieces = binValue.split('b', 2);
-        let nums = pieces[1].replace(/[^01]/g, '');
-        if (nums === '') {
+        let nums;
+        if (pieces.length === 1) {
           nums = '0';
+        } else {
+          nums = pieces[1].replace(/[^01]/g, '');
+          if (nums === '') {
+            nums = '0';
+          }
         }
         binValue = '0b' + nums;
         boardValue = BigInt(binValue);
       }}
-      class="w-50"
     />
   </div>
 </Card>
