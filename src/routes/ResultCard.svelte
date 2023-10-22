@@ -4,8 +4,8 @@
 
   export let board1: bigint = 0n;
   export let board2: bigint = 0n;
-  export let xSize: number;
-  export let ySize: number;
+  export let xSize = 8;
+  export let ySize = 8;
 
   let boardValue = 0n;
   let operation: 'OR' | 'AND' | 'XOR' = 'OR';
@@ -29,19 +29,22 @@
 </script>
 
 <Card class="max-w-max w-full sm:w-fit gap-4 items-center h-min">
-  <BitBoard disabled={true} value={boardValue} {xSize} {ySize} />
+  <BitBoard disabled={true} bind:value={boardValue} {xSize} {ySize} />
   <ButtonGroup>
     <Button
+      class={operation === 'AND' ? 'text-blue-600' : ''}
       on:click={() => {
         operation = 'AND';
       }}>AND</Button
     >
     <Button
+      class={operation === 'OR' ? 'text-blue-600' : ''}
       on:click={() => {
         operation = 'OR';
       }}>OR</Button
     >
     <Button
+      class={operation === 'XOR' ? 'text-blue-600' : ''}
       on:click={() => {
         operation = 'XOR';
       }}>XOR</Button

@@ -23,7 +23,7 @@
 </script>
 
 <Card class="max-w-max w-full sm:w-fit gap-4 items-center">
-  <BitBoard disabled={false} xSize={Number(xSize)} ySize={Number(ySize)} bind:value={boardValue} />
+  <BitBoard disabled={false} {xSize} {ySize} bind:value={boardValue} />
 
   <ButtonGroup>
     <Button
