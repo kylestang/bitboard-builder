@@ -25,8 +25,8 @@
   </div>
 
   <div class="flex flex-row gap-4 flex-wrap justify-center mb-8">
-    <BoardCard bind:boardValue={board1} {xSize} {ySize} />
-    <BoardCard bind:boardValue={board2} {xSize} {ySize} />
-    <ResultCard {board1} {board2} {xSize} {ySize} />
+    <BoardCard bind:boardValue={board1} xSize={Number(xSize)} ySize={Number(ySize)} />
+    <BoardCard bind:boardValue={board2} xSize={Number(xSize)} ySize={Number(ySize)} />
+    <ResultCard {board1} {board2} xSize={Number(xSize)} ySize={Number(ySize)} />
   </div>
 </div>
