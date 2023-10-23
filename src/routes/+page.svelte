@@ -18,7 +18,7 @@
 <div class="h-screen bg-primary-50">
   <GithubCorner />
   <div class="flex flex-col items-center mx-4">
-    <Heading tag="h1" class="w-fit my-8">BitBoard Builder</Heading>
+    <Heading tag="h1" class="w-fit my-8">Bitboard Builder</Heading>
 
     <div class="flex flex-row gap-2 mb-8">
       <div class="flex flex-row items-center">
