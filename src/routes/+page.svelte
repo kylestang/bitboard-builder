@@ -11,6 +11,10 @@
   let ySize = 8;
 </script>
 
+<head>
+  <title>Bitboard Builder</title>
+</head>
+
 <div class="h-screen bg-primary-50">
   <GithubCorner />
   <div class="flex flex-col items-center mx-4">
