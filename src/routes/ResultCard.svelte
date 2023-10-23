@@ -32,19 +32,19 @@
   <BitBoard disabled={true} bind:value={boardValue} {xSize} {ySize} />
   <ButtonGroup>
     <Button
-      class={operation === 'AND' ? 'text-blue-600' : ''}
+      class={operation === 'AND' ? 'text-primary-700' : ''}
       on:click={() => {
         operation = 'AND';
       }}>AND</Button
     >
     <Button
-      class={operation === 'OR' ? 'text-blue-600' : ''}
+      class={operation === 'OR' ? 'text-primary-700' : ''}
       on:click={() => {
         operation = 'OR';
       }}>OR</Button
     >
     <Button
-      class={operation === 'XOR' ? 'text-blue-600' : ''}
+      class={operation === 'XOR' ? 'text-primary-700' : ''}
       on:click={() => {
         operation = 'XOR';
       }}>XOR</Button
