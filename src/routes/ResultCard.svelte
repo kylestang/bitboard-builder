@@ -53,8 +53,8 @@
 
   <div class="flex flex-col w-full">
     Value:
-    <Input disabled={true} bind:value={decValue} />
-    <Input disabled={true} bind:value={hexValue} />
-    <Input disabled={true} bind:value={binValue} />
+    <Input class="min-w-[306px]" disabled={true} bind:value={decValue} />
+    <Input class="min-w-[306px]" disabled={true} bind:value={hexValue} />
+    <Input class="min-w-[306px]" disabled={true} bind:value={binValue} />
   </div>
 </Card>

@@ -56,6 +56,7 @@
   <div class="flex flex-col w-full">
     Value:
     <Input
+      class="min-w-[306px]"
       bind:value={decValue}
       on:input={() => {
         decValue = decValue.replace(/\D/g, '');
@@ -66,6 +67,7 @@
       }}
     />
     <Input
+      class="min-w-[306px]"
       bind:value={hexValue}
       on:input={() => {
         let pieces = hexValue.split('x', 2);
@@ -83,6 +85,7 @@
       }}
     />
     <Input
+      class="min-w-[306px]"
       bind:value={binValue}
       on:input={() => {
         let pieces = binValue.split('b', 2);
