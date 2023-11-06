@@ -13,9 +13,13 @@
 
 <head>
   <title>Bitboard Builder</title>
+  <meta
+    name="description"
+    content="A simple bitboard builder and viewer. Features arbitrarily sized bitboards and bitwise operations."
+  />
 </head>
 
-<div class="h-screen bg-primary-50">
+<div class="bg-primary-50 h-max min-h-screen">
   <GithubCorner />
   <div class="flex flex-col items-center mx-4">
     <Heading tag="h1" class="w-fit my-8">Bitboard Builder</Heading>
